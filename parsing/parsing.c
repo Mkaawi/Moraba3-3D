@@ -6,21 +6,17 @@
 /*   By: abdennac <abdennac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 16:32:18 by abdennac          #+#    #+#             */
-/*   Updated: 2025/01/19 20:07:43 by abdennac         ###   ########.fr       */
+/*   Updated: 2025/03/07 23:55:11 by abdennac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-void	error(char *msg)
-{
-	printf("%s\n", msg);
-	exit(1);
-}
+
 
 int	check_map_name(char	*name)
 {
-	if (!ft_strnstr(name, ".map", ft_strlen(name)) || count(name, '.') != 1)
+	if (!ft_strnstr(name, ".cub", ft_strlen(name)) || count(name, '.') != 1)
 		return (1);
 	return (0);
 }
