@@ -6,7 +6,7 @@
 /*   By: abdennac <abdennac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 16:32:18 by abdennac          #+#    #+#             */
-/*   Updated: 2025/03/07 23:56:10 by abdennac         ###   ########.fr       */
+/*   Updated: 2025/03/08 19:36:46 by abdennac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,6 @@ int	check_map_name(char	*name)
 	if (!ft_strnstr(name, ".cub", ft_strlen(name)) || count(name, '.') != 1)
 		return (1);
 	return (0);
-}
-
-void	fill_map(t_data *data, char *name)
-{
-	int	fd;
-	int	i;
-	char **tmp;
-	(void)data;
-
-	i = -1;
-	tmp = malloc(sizeof(char *));
-	fd = open(name, O_RDONLY);
-	while (1)
-	{
-		tmp[++i] = get_next_line(fd);
-		if (!tmp[i])
-			break;
-	}
-	close(fd);
 }
 
 void	parse(t_data *data, int ac, char **av)
