@@ -6,13 +6,11 @@
 /*   By: abdennac <abdennac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 16:32:18 by abdennac          #+#    #+#             */
-/*   Updated: 2025/03/07 23:55:11 by abdennac         ###   ########.fr       */
+/*   Updated: 2025/03/07 23:56:10 by abdennac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
-
-
 
 int	check_map_name(char	*name)
 {
