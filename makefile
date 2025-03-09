@@ -6,7 +6,7 @@
 #    By: abdennac <abdennac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/07 16:48:52 by abdennac          #+#    #+#              #
-#    Updated: 2025/03/08 19:37:13 by abdennac         ###   ########.fr        #
+#    Updated: 2025/03/09 01:30:55 by abdennac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ HEADERS	= -I ./include -I $(LIBMLX)/include
 LIBS	= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 SRCS	= 	main.c \
 			parsing/parsing.c \
+			parsing/parse_map.c \
 			parsing/fill_map.c \
 			parsing/utils.c   \
 			get_next_line/get_next_line.c \

@@ -6,7 +6,7 @@
 /*   By: abdennac <abdennac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 19:36:07 by abdennac          #+#    #+#             */
-/*   Updated: 2025/03/08 21:28:01 by abdennac         ###   ########.fr       */
+/*   Updated: 2025/03/09 21:50:05 by abdennac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,29 @@ void print_stuff(t_data *data)
 	printf("\nmap :\n\n");
 	while(data->map[++i])
 		printf("%s", data->map[i]);
+}
+
+void	change_space_to_wall(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (data->map[i])
+	{
+		j = 0;
+		while (data->map[i][j] == ' ' || data->map[i][j] == '\t'
+		|| data->map[i][j] == '\r'
+		|| data->map[i][j] == '\v' || data->map[i][j] == '\f')
+			j++;
+		while (data->map[i][++j])
+		{
+			if (data->map[i][j] == ' '
+				&& j != data->map[i][ft_strlen(data->map[i]) - 1])
+				data->map[i][j] = '1';
+		}
+		i++;
+	}
 }
 
 void get_map_info(char **tmp, t_data *data)
@@ -110,5 +133,6 @@ void	fill_map(t_data *data, char *name)
 	close(fd);
 	get_map_info(tmp, data);
 	get_map(tmp, data);
-	print_stuff(data);
+	// change_space_to_wall(data);
+	// print_stuff(data);
 }
