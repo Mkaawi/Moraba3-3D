@@ -6,7 +6,7 @@
 /*   By: abdennac <abdennac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 19:36:07 by abdennac          #+#    #+#             */
-/*   Updated: 2025/03/09 21:50:05 by abdennac         ###   ########.fr       */
+/*   Updated: 2025/03/10 19:35:13 by abdennac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ int get_map_line_count(char **tmp)
 	i = -1;
 	while (tmp[++i])
 	{
-		// if (ft_strchr(tmp[i], '1'))
 		if (tmp[i][0] == '1')
 			map_line_count++;
 	}
