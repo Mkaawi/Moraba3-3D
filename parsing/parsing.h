@@ -6,7 +6,7 @@
 /*   By: abdennac <abdennac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 16:32:37 by abdennac          #+#    #+#             */
-/*   Updated: 2025/03/09 01:28:47 by abdennac         ###   ########.fr       */
+/*   Updated: 2025/03/10 22:02:16 by abdennac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,12 @@ void	parse_map(t_data *data);
 /***************  Utils  ***************/
 
 int	count(char *arr, char c);
+void	ft_free(char **ptr);
+void	free_stuff(t_data *data);
 void	error(char *msg);
+void	error2(char *str, t_data *data);
+void 	print_stuff(t_data *data);
+
 
 
 #endif

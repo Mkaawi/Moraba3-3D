@@ -1,0 +1,4 @@
+* split map info
+* no more than 1 map
+* too many \n befor map
+* 

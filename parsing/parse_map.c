@@ -6,7 +6,7 @@
 /*   By: abdennac <abdennac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 01:27:59 by abdennac          #+#    #+#             */
-/*   Updated: 2025/03/10 19:29:38 by abdennac         ###   ########.fr       */
+/*   Updated: 2025/03/10 21:08:34 by abdennac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,12 @@ int	check_player(char **map)
 	return (0);
 }
 
+
+
 void	parse_map(t_data *data)
 {
 	if (check_player(data->map) != 0)
-		error ("player count error");
+		error2 ("player count error", data);
 	if (check_map_borders(data->map) != 0)
-		error("map borders error");
+		error2 ("map borders error", data);
 }
