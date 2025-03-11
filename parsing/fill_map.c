@@ -6,7 +6,7 @@
 /*   By: abdennac <abdennac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 19:36:07 by abdennac          #+#    #+#             */
-/*   Updated: 2025/03/10 23:10:40 by abdennac         ###   ########.fr       */
+/*   Updated: 2025/03/11 17:43:34 by abdennac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,34 +32,25 @@ void change_space_to_wall(t_data *data)
 	}
 }
 
-// void	split_info(t_data *data)
-// {
-// 	char **split;
+void split_info2(t_data *data)
+{
+	char **split;
 
-// 	split = ft_split(data->north_text, ' ');
-// 	free(data->north_text);
-// 	data->north_text = ft_strdup(split[1]);
-// 	data->north_text[ft_strlen(data->north_text) - 1] = '\0';
-// 	ft_free(split);
-
-// 	split = ft_split(data->south_text, ' ');
-// 	free(data->south_text);
-// 	data->north_text = ft_strdup(split[1]);
-// 	data->north_text[ft_strlen(data->south_text) - 1] = '\0';
-// 	ft_free(split);
-
-// 	split = ft_split(data->west_text, ' ');
-// 	free(data->west_text);
-// 	data->north_text = ft_strdup(split[1]);
-// 	data->north_text[ft_strlen(data->west_text) - 1] = '\0';
-// 	ft_free(split);
-
-// 	split = ft_split(data->east_text, ' ');
-// 	free(data->east_text);
-// 	data->north_text = ft_strdup(split[1]);
-// 	data->north_text[ft_strlen(data->south_text) - 1] = '\0';
-// 	ft_free(split);
-// }
+	split = ft_split(data->west_text, ' ');
+	if (split && split[1])
+	{
+		free(data->west_text);
+		data->west_text = ft_strdup(split[1]);
+	}
+	ft_free(split);
+	split = ft_split(data->east_text, ' ');
+	if (split && split[1])
+	{
+		free(data->east_text);
+		data->east_text = ft_strdup(split[1]);
+	}
+	ft_free(split);
+}
 
 void split_info(t_data *data)
 {
@@ -79,25 +70,31 @@ void split_info(t_data *data)
 		data->south_text = ft_strdup(split[1]);
 	}
 	ft_free(split);
-	split = ft_split(data->west_text, ' ');
-	if (split && split[1])
-	{
-		free(data->west_text);
-		data->west_text = ft_strdup(split[1]);
-	}
+	split_info2(data);
+}
+int *split_info3(char *str)
+{
+	char **split;
+	char **tmp;
+	int *arr;
+
+	str[ft_strlen(str) - 1] = '\0';
+	split = ft_split(str, ' ');
+	tmp = ft_split(split[1], ',');
+	arr = malloc(ft_strlen2(tmp) * sizeof(int));
+	arr[0] = ft_atoi(tmp[0]);
+	arr[1] = ft_atoi(tmp[1]);
+	arr[2] = ft_atoi(tmp[2]);
 	ft_free(split);
-	split = ft_split(data->east_text, ' ');
-	if (split && split[1])
-	{
-		free(data->east_text);
-		data->east_text = ft_strdup(split[1]);
-	}
-	ft_free(split);
+	ft_free(tmp);
+	return (arr);
 }
 
 void get_map_info(char **tmp, t_data *data)
 {
 	int i;
+	char *C;
+	char *F;
 
 	i = -1;
 	while (tmp[++i])
@@ -111,11 +108,13 @@ void get_map_info(char **tmp, t_data *data)
 		else if (ft_strnstr(tmp[i], "EA", 2))
 			data->east_text = ft_strdup(tmp[i]);
 		else if (ft_strnstr(tmp[i], "F ", 2))
-			data->floor_color = ft_strdup(tmp[i]);
+			F = ft_strdup(tmp[i]);
 		else if (ft_strnstr(tmp[i], "C ", 2))
-			data->cieling_color = ft_strdup(tmp[i]);
+			C = ft_strdup(tmp[i]);
 	}
 	split_info(data);
+	data->cieling_color = split_info3(C);
+	data->floor_color = split_info3(F);
 }
 
 int get_map_line_count(char **tmp)

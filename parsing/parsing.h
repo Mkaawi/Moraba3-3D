@@ -6,7 +6,7 @@
 /*   By: abdennac <abdennac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 16:32:37 by abdennac          #+#    #+#             */
-/*   Updated: 2025/03/10 22:02:16 by abdennac         ###   ########.fr       */
+/*   Updated: 2025/03/11 17:30:58 by abdennac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 typedef struct s_data
 {
 	char	**map;
-	char	*cieling_color;
-	char	*floor_color;
+	int		*cieling_color;
+	int		*floor_color;
 	char	*north_text;
 	char	*south_text;
 	char	*west_text;
@@ -32,7 +32,8 @@ void	parse_map(t_data *data);
 
 /***************  Utils  ***************/
 
-int	count(char *arr, char c);
+int		count(char *arr, char c);
+int		ft_strlen2(char **str);
 void	ft_free(char **ptr);
 void	free_stuff(t_data *data);
 void	error(char *msg);
