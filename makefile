@@ -6,7 +6,7 @@
 #    By: abdennac <abdennac@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/07 16:48:52 by abdennac          #+#    #+#              #
-#    Updated: 2025/03/09 01:30:55 by abdennac         ###   ########.fr        #
+#    Updated: 2025/03/11 20:29:42 by abdennac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCS	= 	main.c \
 			parsing/parse_map.c \
 			parsing/fill_map.c \
 			parsing/utils.c   \
+			parsing/utils2.c   \
 			get_next_line/get_next_line.c \
 			libft/ft_atoi.c libft/ft_bzero.c			\
 			libft/ft_isalnum.c libft/ft_isalpha.c		\

@@ -6,7 +6,7 @@
 /*   By: abdennac <abdennac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 01:27:59 by abdennac          #+#    #+#             */
-/*   Updated: 2025/03/10 21:08:34 by abdennac         ###   ########.fr       */
+/*   Updated: 2025/03/11 20:37:00 by abdennac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,6 @@ int	check_player(char **map)
 		return (1);
 	return (0);
 }
-
-
 
 void	parse_map(t_data *data)
 {

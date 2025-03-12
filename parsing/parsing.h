@@ -6,7 +6,7 @@
 /*   By: abdennac <abdennac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 16:32:37 by abdennac          #+#    #+#             */
-/*   Updated: 2025/03/11 17:30:58 by abdennac         ###   ########.fr       */
+/*   Updated: 2025/03/12 00:32:02 by abdennac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_data
 void	parse(t_data *data, int ac, char **av);
 void	fill_map(t_data *data, char *name);
 void	parse_map(t_data *data);
+int 	get_map_line_count(char **tmp);
 
 /***************  Utils  ***************/
 
@@ -39,6 +40,7 @@ void	free_stuff(t_data *data);
 void	error(char *msg);
 void	error2(char *str, t_data *data);
 void 	print_stuff(t_data *data);
+char	*ft_strdup_no_newline(const char *src);
 
 
 
