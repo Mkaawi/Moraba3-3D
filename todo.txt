@@ -1,3 +1,2 @@
 * no more than 1 map
 * too many \n befor map
-* get_map error

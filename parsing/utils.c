@@ -6,7 +6,7 @@
 /*   By: abdennac <abdennac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 18:27:59 by abdennac          #+#    #+#             */
-/*   Updated: 2025/03/11 20:07:26 by abdennac         ###   ########.fr       */
+/*   Updated: 2025/03/15 19:31:32 by abdennac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,16 @@ void error2(char *str, t_data *data)
 
 void print_stuff(t_data *data)
 {
-	// 	printf("\nwalls data :\n\n");
-	// 	printf("NO %s\n", data->north_text);
-	// 	printf("SO %s\n", data->south_text);
-	// 	printf("WE %s\n", data->west_text);
-	// 	printf("EA %s\n", data->east_text);
-	// 	printf("\nfloor/ceiling data :\n\n");
+		printf("\nwalls data :\n\n");
+		printf("NO %s\n", data->north_text);
+		printf("SO %s\n", data->south_text);
+		printf("WE %s\n", data->west_text);
+		printf("EA %s\n", data->east_text);
+		printf("\nfloor/ceiling data :\n\n");
 	printf("C : %d,%d,%d\n", data->cieling_color[0], data->cieling_color[1], data->cieling_color[2]);
 	printf("F : %d,%d,%d\n", data->floor_color[0], data->floor_color[1], data->floor_color[2]);
-	// 	int	i = -1;
-	// 	printf("\nmap :\n\n");
-	// 	while(data->map[++i])
-	// 		printf("%s", data->map[i]);
+		int	i = -1;
+		printf("\nmap :\n\n");
+		while(data->map[++i])
+			printf("%s", data->map[i]);
 }

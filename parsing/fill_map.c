@@ -6,7 +6,7 @@
 /*   By: abdennac <abdennac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 19:36:07 by abdennac          #+#    #+#             */
-/*   Updated: 2025/03/12 19:16:50 by abdennac         ###   ########.fr       */
+/*   Updated: 2025/03/18 00:01:10 by abdennac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,24 +40,28 @@ int	parse_ints2(char *str)
 
 int *split_info3(char *str, t_data *data)
 {
-	char **split;
-	char **tmp;
+	char **split, **tmp;
 	int *arr;
 
 	if (parse_ints2(str) != 0)
 		error2("ceiling/floor error", data);
 	split = ft_split(str, ' ');
+	if (!split || !split[1])
+		error2("Invalid ceiling/floor format", data);
 	tmp = ft_split(split[1], ',');
-	arr = malloc(ft_strlen2(tmp) * sizeof(int));
+	if (!tmp || ft_strlen2(tmp) != 3)
+		error2("Ceiling/floor color format error", data);
+	arr = malloc(3 * sizeof(int));
 	arr[0] = ft_atoi(tmp[0]);
 	arr[1] = ft_atoi(tmp[1]);
 	arr[2] = ft_atoi(tmp[2]);
 	ft_free(split);
 	ft_free(tmp);
 	if (parse_ints(arr) != 0)
-		error2("ceiling/floor error", data);
+		error2("ceiling/floor color out of range", data);
 	return (arr);
 }
+
 
 void split_info2(t_data *data)
 {
@@ -161,26 +165,57 @@ void	init(t_data *data)
 	data->west_text = NULL;
 }
 
+int	check_map(char **arr)
+{
+	int i = 0;
+	int is_map = 0;
+
+	while (arr[i])
+	{
+		if (ft_strnstr(arr[i], "NO", 2) || ft_strnstr(arr[i], "SO", 2) ||
+			ft_strnstr(arr[i], "WE", 2) || ft_strnstr(arr[i], "EA", 2) ||
+			ft_strnstr(arr[i], "F ", 2) || ft_strnstr(arr[i], "C ", 2))
+		{
+			i++;
+			continue;
+		}
+		if (ft_strchr(arr[i], '1'))
+		{
+			if (is_map)
+				return (1);
+			is_map = 1;
+			while (arr[i] && ft_strchr(arr[i], '1'))
+				i++;
+		}
+		else if (is_map)
+			return (1);
+		else
+			i++;
+	}
+	return (0);
+}
+
 void fill_map(t_data *data, char *name)
 {
-	int fd;
-	int i;
-	char **tmp;
+	int fd, i = 0;
+	char **tmp = malloc(1000 * sizeof(char *));
 
-	i = -1;
-	init(data);
-	tmp = malloc(sizeof(char *));
 	fd = open(name, O_RDONLY);
-	while (1)
-	{
-		tmp[++i] = get_next_line(fd);
-		if (!tmp[i])
-			break;
-	}
+	if (fd < 0)
+		error("Failed to open file");
+
+	while ((tmp[i] = get_next_line(fd)))
+		i++;
+	tmp[i] = NULL;
+
 	close(fd);
+	if (check_map(tmp) == 1)
+	{
+		ft_free(tmp);
+		error("map error");
+	}
 	get_map_info(tmp, data);
 	get_map(tmp, data);
-	// ft_free(tmp);
-	// change_space_to_wall(data);
-	// print_stuff(data);
+	ft_free(tmp);
 }
+

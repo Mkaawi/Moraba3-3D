@@ -6,7 +6,7 @@
 /*   By: abdennac <abdennac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 17:46:50 by abdennac          #+#    #+#             */
-/*   Updated: 2025/03/11 21:55:17 by abdennac         ###   ########.fr       */
+/*   Updated: 2025/03/15 19:44:19 by abdennac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void ft_free(char **ptr)
 	int i;
 
 	i = -1;
+	if (!ptr)
+		return;
 	while (ptr[++i])
 		free(ptr[i]);
 	free(ptr);
